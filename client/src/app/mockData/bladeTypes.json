@@ -1,0 +1,11 @@
+[
+  { "name": "Clip-Point", "id": "bladeType_1" },
+  { "name": "Drop-Point", "id": "bladeType_2" },
+  { "name": "Hawkbill", "id": "bladeType_3" },
+  { "name": "Kukri", "id": "bladeType_4" },
+  { "name": "Spay-Point", "id": "bladeType_5" },
+  { "name": "Spear-Point", "id": "bladeType_6" },
+  { "name": "Tanto", "id": "bladeType_7" },
+  { "name": "Wharncliffe", "id": "bladeType_8" },
+  { "name": "Combo-Grind", "id": "bladeType_9" }
+]

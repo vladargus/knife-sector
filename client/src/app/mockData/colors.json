@@ -1,0 +1,12 @@
+[
+  { "name": "Black", "hex": "000000", "id": "000000" },
+  { "name": "Blue", "hex": "0D4CFF", "id": "0D4CFF" },
+  { "name": "Camo", "hex": "497249", "id": "497249" },
+  { "name": "Green Grey", "hex": "347889", "id": "347889" },
+  { "name": "Olive Drab", "hex": "4F6B3D", "id": "4F6B3D" },
+  { "name": "Orange", "hex": "FF540E", "id": "FF540E" },
+  { "name": "Steel", "hex": "ADADAD", "id": "ADADAD" },
+  { "name": "Tan", "hex": "A68760", "id": "A68760" },
+  { "name": "Wood", "hex": "3A2C1C", "id": "3A2C1C" },
+  { "name": "Yellow", "hex": "FFF200", "id": "FFF200" }
+]

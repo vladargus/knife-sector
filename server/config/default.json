@@ -1,0 +1,4 @@
+{
+  "port": 8080,
+  "mongoUri": "mongodb+srv://Argus:Vlad5050@cluster0.22es6gb.mongodb.net/app?retryWrites=true&w=majority"
+}
