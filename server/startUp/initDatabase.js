@@ -1,8 +1,10 @@
+const Knife = require('../models/Knife')
 const Brand = require('../models/Brand')
 const Country = require('../models/Country')
 const Color = require('../models/Color')
 const BladeType = require('../models/BladeType')
 const LockType = require('../models/LockType')
+const knifeMock = require('../mock/knives.json')
 const brandMock = require('../mock/brands.json')
 const countryMock = require('../mock/countries.json')
 const colorMock = require('../mock/colors.json')
@@ -10,6 +12,11 @@ const bladeTypeMock = require('../mock/bladeTypes.json')
 const lockTypeMock = require('../mock/lockTypes.json')
 
 module.exports = async () => {
+  const knives = await Knife.find()
+  if (knives.length !== knifeMock.length) {
+    await createInitialEntity(Knife, knifeMock)
+  }
+
   const brands = await Brand.find()
   if (brands.length !== brandMock.length) {
     await createInitialEntity(Brand, brandMock)
@@ -41,7 +48,7 @@ async function createInitialEntity(Model, data) {
   return Promise.all(
     data.map(async item => {
       try {
-        delete item.id
+        delete item._id
         const newItem = new Model(item)
         await newItem.save()
         return newItem

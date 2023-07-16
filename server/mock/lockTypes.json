@@ -1,7 +1,7 @@
 [
   { "name": "Axis-Lock", "id": "lockType_1" },
   { "name": "Back-Lock", "id": "lockType_2" },
-  { "name": "Frame-lock", "id": "lockType_3" },
+  { "name": "Frame-Lock", "id": "lockType_3" },
   { "name": "Liner-Lock", "id": "lockType_4" },
   { "name": "Out-the-Front Double Auto", "id": "lockType_5" },
   { "name": "Tri-Ad Lock", "id": "lockType_6" }

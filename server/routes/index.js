@@ -3,6 +3,7 @@ const router = express.Router({ mergeParams: true })
 
 router.use('/auth', require('./auth.routes'))
 router.use('/user', require('./user.routes'))
+router.use('/knife', require('./knife.routes'))
 router.use('/brand', require('./brand.routes'))
 router.use('/country', require('./country.routes'))
 router.use('/color', require('./color.routes'))

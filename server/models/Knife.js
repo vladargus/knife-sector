@@ -2,7 +2,7 @@ const { Schema, model } = require('mongoose')
 
 const schema = new Schema(
   {
-    brand: { type: Schema.Types.ObjectId, ref: 'Brand', required: true },
+    brand: String,
     model: String,
     price: String,
     image: String,
@@ -15,14 +15,10 @@ const schema = new Schema(
     hardness: String,
     bladeMaterial: String,
     handleMaterial: String,
-    bladeType: {
-      type: Schema.Types.ObjectId,
-      ref: 'BladeType',
-      required: true,
-    },
-    lockType: { type: Schema.Types.ObjectId, ref: 'LockType', required: true },
-    color: { type: Schema.Types.ObjectId, ref: 'Color', required: true },
-    country: { type: Schema.Types.ObjectId, ref: 'Country', required: true },
+    bladeType: String,
+    lockType: String,
+    color: String,
+    country: String,
     weight: String,
     link: String,
   },
