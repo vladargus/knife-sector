@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom'
 
 const OrderAccepted = () => {
   const location = useLocation()
-  const id = location.state ? location.state.id : ''
+  const id = location.state ? location.state.id.replace('order', '') : ''
 
   return (
     <div className='flex-center-column notification'>

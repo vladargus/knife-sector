@@ -40,10 +40,5 @@ export const loadBladeTypesList = () => async (dispatch) => {
 export const getBladeTypes = () => (state) => state.bladeTypes.entities
 export const getBladeTypesLoadingStatus = () => (state) =>
   state.bladeTypes.isLoading
-export const getBladeTypeById = (id) => (state) => {
-  if (state.bladeTypes.entities) {
-    return state.bladeTypes.entities.find((b) => b.id === id)
-  }
-}
 
 export default bladeTypesReducer

@@ -49,8 +49,7 @@ router
       const { knifeId } = req.params
 
       const removedKnife = await Knife.findById(knifeId)
-
-      await removedKnife.remove()
+      await removedKnife.deleteOne()
 
       return res.send(null)
     } catch (e) {

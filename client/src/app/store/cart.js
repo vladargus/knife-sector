@@ -1,14 +1,12 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
 import cartService from '../services/cart.service'
-import { getNewId } from '../utils/getNewId'
 
 const cartSlice = createSlice({
   name: 'cart',
   initialState: {
     entities: null,
     isLoading: true,
-    error: null,
-    dataLoaded: false
+    error: null
   },
   reducers: {
     cartRequested: (state) => {
@@ -16,7 +14,6 @@ const cartSlice = createSlice({
     },
     cartReceived: (state, action) => {
       state.entities = action.payload
-      state.dataLoaded = true
       state.isLoading = false
     },
     cartRequestFailed: (state, action) => {
@@ -28,13 +25,8 @@ const cartSlice = createSlice({
     },
     userCartUpdated: (state, action) => {
       state.entities[
-        state.entities.findIndex((user) => user.id === action.payload.id)
+        state.entities.findIndex((user) => user._id === action.payload._id)
       ] = action.payload
-    },
-    itemRemoved: (state, action) => {
-      state.entities = state.entities.filter(
-        (item) => item.id !== action.payload
-      )
     }
   }
 })
@@ -45,12 +37,10 @@ const {
   cartReceived,
   cartRequestFailed,
   userCartCreated,
-  userCartUpdated,
-  itemRemoved
+  userCartUpdated
 } = actions
 const createUserCartRequested = createAction('cart/createUserCartRequested')
 const updateUserCartRequested = createAction('cart/updateUserCartRequested')
-const removeItemRequested = createAction('cart/removeItemRequested')
 
 export const loadCartList = () => async (dispatch) => {
   dispatch(cartRequested())
@@ -65,7 +55,6 @@ export const loadCartList = () => async (dispatch) => {
 export const createUserCart = (userId, payload) => async (dispatch) => {
   dispatch(createUserCartRequested(payload))
   const userCart = {
-    id: getNewId('cart'),
     userId,
     items: payload
   }
@@ -82,18 +71,6 @@ export const updateUserCart = (payload) => async (dispatch) => {
   try {
     const { content } = await cartService.update(payload)
     dispatch(userCartUpdated(content))
-  } catch (error) {
-    dispatch(cartRequestFailed(error.message))
-  }
-}
-
-export const removeItem = (cartId, itemId) => async (dispatch) => {
-  dispatch(removeItemRequested())
-  try {
-    const { content } = await cartService.remove(cartId, itemId)
-    if (content === null) {
-      dispatch(itemRemoved(itemId))
-    }
   } catch (error) {
     dispatch(cartRequestFailed(error.message))
   }

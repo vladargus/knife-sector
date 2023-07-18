@@ -3,19 +3,18 @@ const Cart = require('../models/Cart')
 const auth = require('../middleware/auth.middleware')
 const router = express.Router({ mergeParams: true })
 
-router.get('/', auth, async (req, res) => {
-  try {
-    const list = await Cart.find()
-    res.status(200).send(list)
-  } catch (e) {
-    res.status(500).json({
-      message: 'На сервере произошла ошибка. Попробуйте позже.',
-    })
-  }
-})
-
 router
-  .route('/:cartId')
+  .route('/')
+  .get(auth, async (req, res) => {
+    try {
+      const list = await Cart.find()
+      res.status(200).send(list)
+    } catch (e) {
+      res.status(500).json({
+        message: 'На сервере произошла ошибка. Попробуйте позже.',
+      })
+    }
+  })
   .post(auth, async (req, res) => {
     try {
       const newCart = await Cart.create(req.body)
@@ -26,35 +25,21 @@ router
       })
     }
   })
-  .patch(auth, async (req, res) => {
-    try {
-      const { cartId } = req.params
 
-      const updatedCart = await Cart.findByIdAndUpdate(cartId, req.body, {
-        new: true,
-      })
+router.patch('/:cartId', auth, async (req, res) => {
+  try {
+    const { cartId } = req.params
 
-      res.status(200).send(updatedCart)
-    } catch (error) {
-      res.status(500).json({
-        message: 'На сервере произошла ошибка. Попробуйте позже.',
-      })
-    }
-  })
-  .delete(auth, async (req, res) => {
-    try {
-      const { cartId } = req.params
+    const updatedCart = await Cart.findByIdAndUpdate(cartId, req.body, {
+      new: true,
+    })
 
-      const removedItem = await Cart.findById(cartId)
-
-      await removedItem.remove()
-
-      return res.send(null)
-    } catch (e) {
-      res.status(500).json({
-        message: 'На сервере произошла ошибка. Попробуйте позже.',
-      })
-    }
-  })
+    res.status(200).send(updatedCart)
+  } catch (error) {
+    res.status(500).json({
+      message: 'На сервере произошла ошибка. Попробуйте позже.',
+    })
+  }
+})
 
 module.exports = router

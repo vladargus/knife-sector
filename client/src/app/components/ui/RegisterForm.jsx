@@ -100,11 +100,18 @@ const RegisterForm = () => {
 
   const isValid = Object.keys(errors).length === 0
 
+  const normalizeEmail = (email) => {
+    if (email.split('@')[1].includes('gmail')) {
+      return email.split('@')[0].replaceAll('.', '') + '@' + email.split('@')[1]
+    }
+    return email
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const isValid = validate()
     if (!isValid) return
-    dispatch(signUp(data))
+    dispatch(signUp({ ...data, email: normalizeEmail(data.email) }))
   }
 
   const handleKeyDown = (e) => {

@@ -16,39 +16,43 @@ const AddToFavoritesButton = ({ knife }) => {
       return
     }
 
-    currentUser.liked
-      ? dispatch(
-          updateUser(
-            currentUser.liked && currentUser.liked[knife.id]
-              ? {
-                  ...currentUser,
-                  liked: {
-                    ...currentUser.liked,
-                    [knife.id]: null
-                  }
+    if (currentUser.favorites) {
+      const { [knife._id]: removedProperty, ...favoritesWithoutKnife } =
+        currentUser.favorites
+
+      dispatch(
+        updateUser(
+          currentUser.favorites && currentUser.favorites[knife._id]
+            ? {
+                ...currentUser,
+                favorites: favoritesWithoutKnife
+              }
+            : {
+                ...currentUser,
+                favorites: {
+                  ...currentUser.favorites,
+                  [knife._id]: true
                 }
-              : {
-                  ...currentUser,
-                  liked: {
-                    ...currentUser.liked,
-                    [knife.id]: true
-                  }
-                }
-          )
+              }
         )
-      : dispatch(
-          updateUser({
-            ...currentUser,
-            liked: {
-              [knife.id]: true
-            }
-          })
-        )
+      )
+    } else {
+      dispatch(
+        updateUser({
+          ...currentUser,
+          favorites: {
+            [knife._id]: true
+          }
+        })
+      )
+    }
   }
 
   return (
     <button className='knife-button ms-3 px-3' onClick={handleHeartClick}>
-      {currentUser && currentUser.liked && currentUser.liked[knife.id] ? (
+      {currentUser &&
+      currentUser.favorites &&
+      currentUser.favorites[knife._id] ? (
         <i className='bi bi-heart-fill'></i>
       ) : (
         <i className='bi bi-heart'></i>

@@ -40,7 +40,7 @@ export const getColors = () => (state) => state.colors.entities
 export const getColorsLoadingStatus = () => (state) => state.colors.isLoading
 export const getColorById = (id) => (state) => {
   if (state.colors.entities) {
-    return state.colors.entities.find((c) => c.id === id)
+    return state.colors.entities.find((c) => c._id === id)
   }
 }
 

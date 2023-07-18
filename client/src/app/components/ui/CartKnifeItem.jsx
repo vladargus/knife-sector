@@ -1,25 +1,25 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'react-router-dom'
-import Loader from '../common/Loader'
 import { useDispatch, useSelector } from 'react-redux'
-import { getBrandById, getBrandsLoadingStatus } from '../../store/brands'
-import { getUserCart, removeItem, updateUserCart } from '../../store/cart'
+import { getUserCart, updateUserCart } from '../../store/cart'
 import { getCurrentUserId } from '../../store/users'
 import Price from '../common/Price'
 
 const CartKnifeItem = ({ knife }) => {
   const dispatch = useDispatch()
-  const brand = useSelector(getBrandById(knife.brand))
-  const brandsLoading = useSelector(getBrandsLoadingStatus())
   const currentUserId = useSelector(getCurrentUserId())
   const userCart = useSelector(getUserCart(currentUserId))
-  const count = userCart.items[knife.id].quantity
-
-  if (brandsLoading) return <Loader />
+  const count = userCart.items[knife._id].quantity
 
   const handleRemoveItem = () => {
-    dispatch(removeItem(userCart.id, knife.id))
+    const { [knife._id]: removedItem, ...itemsWithoutKnife } = userCart.items
+    dispatch(
+      updateUserCart({
+        ...userCart,
+        items: itemsWithoutKnife
+      })
+    )
   }
 
   const handleDecrease = () => {
@@ -28,7 +28,10 @@ const CartKnifeItem = ({ knife }) => {
         ...userCart,
         items: {
           ...userCart.items,
-          [knife.id]: { id: knife.id, quantity: count > 1 ? count - 1 : count }
+          [knife._id]: {
+            id: knife._id,
+            quantity: count > 1 ? count - 1 : count
+          }
         }
       })
     )
@@ -39,7 +42,7 @@ const CartKnifeItem = ({ knife }) => {
         ...userCart,
         items: {
           ...userCart.items,
-          [knife.id]: { id: knife.id, quantity: count + 1 }
+          [knife._id]: { id: knife._id, quantity: count + 1 }
         }
       })
     )
@@ -50,13 +53,13 @@ const CartKnifeItem = ({ knife }) => {
       <div className='d-flex align-items-center'>
         <Link
           className='flex-center-column cart-image-link'
-          to={`/knives/${knife.id}`}
+          to={`/knives/${knife._id}`}
         >
           <img className='cart-knife-image' src={knife.image} alt='' />
         </Link>
-        <Link className='cart-knife-title ms-3' to={`/knives/${knife.id}`}>
+        <Link className='cart-knife-title ms-3' to={`/knives/${knife._id}`}>
           <span className='cart-knife-title my-2'>
-            Нож {brand.name + ' ' + knife.model}
+            Нож {knife.brand + ' ' + knife.model}
           </span>
         </Link>
       </div>
@@ -69,7 +72,7 @@ const CartKnifeItem = ({ knife }) => {
             <i className='bi bi-dash-circle'></i>
           </button>
           <span className='fw-semibold'>
-            {userCart.items[knife.id].quantity}
+            {userCart.items[knife._id].quantity}
           </span>
           <button className='cart-knife-button ms-3' onClick={handleIncrease}>
             <i className='bi bi-plus-circle'></i>

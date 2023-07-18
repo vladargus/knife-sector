@@ -4,11 +4,7 @@ import Loader from '../../common/Loader'
 import { validator } from '../../../utils/validator'
 import TextField from '../../common/TextField'
 import { useDispatch, useSelector } from 'react-redux'
-import {
-  getCurrentUserData,
-  updateEmail,
-  updateUser
-} from '../../../store/users'
+import { getCurrentUserData, updateUser } from '../../../store/users'
 
 const EditUserPage = () => {
   const currentUser = useSelector(getCurrentUserData())
@@ -78,16 +74,20 @@ const EditUserPage = () => {
 
   const isValid = Object.keys(errors).length === 0
 
+  const normalizeEmail = (email) => {
+    if (email.split('@')[1].includes('gmail')) {
+      return email.split('@')[0].replaceAll('.', '') + '@' + email.split('@')[1]
+    }
+    return email
+  }
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const isValid = validate()
     if (!isValid) return
     try {
-      if (user.email !== currentUser.email) {
-        dispatch(updateEmail(user.email))
-      }
-      dispatch(updateUser(user))
-      navigate(`/user/${currentUser.id}/profile`)
+      dispatch(updateUser({ ...user, email: normalizeEmail(user.email) }))
+      navigate(`/user/${currentUser._id}/profile`)
     } catch (error) {
       setErrors(error)
     }
@@ -160,7 +160,7 @@ const EditUserPage = () => {
             </button>
             <Link
               className='knife-button link-button'
-              to={`/user/${currentUser.id}/profile`}
+              to={`/user/${currentUser._id}/profile`}
             >
               Отмена
             </Link>

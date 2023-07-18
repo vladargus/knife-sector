@@ -40,10 +40,5 @@ export const loadLockTypesList = () => async (dispatch) => {
 export const getLockTypes = () => (state) => state.lockTypes.entities
 export const getLockTypesLoadingStatus = () => (state) =>
   state.lockTypes.isLoading
-export const getLockTypeById = (id) => (state) => {
-  if (state.lockTypes.entities) {
-    return state.lockTypes.entities.find((l) => l.id === id)
-  }
-}
 
 export default lockTypesReducer

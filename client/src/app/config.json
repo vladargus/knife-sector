@@ -1,5 +1,5 @@
 {
-  "apiEndpoint": "http://localhost:4200/",
+  "apiEndpoint": "http://localhost:8080/api",
   "apiEndpointFireBase": "https://knife-sector-db-default-rtdb.europe-west1.firebasedatabase.app/",
-  "isFireBase": true
+  "isFireBase": false
 }

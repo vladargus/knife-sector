@@ -1,6 +1,5 @@
 [
   {
-    "id": "id000000299",
     "brand": "Boker",
     "model": "Plus Urban Trapper",
     "price": "10410",
@@ -22,7 +21,6 @@
     "link": "https://forest-home.ru/product/nozh-boker-plus-urban-trapper-stal-vg10-rukojat-titan-bk01bo732/"
   },
   {
-    "id": "id000031288",
     "brand": "CRKT",
     "model": "CEO",
     "price": "5030",
@@ -44,7 +42,6 @@
     "link": "https://forest-home.ru/product/nozh-crkt-ceo-skladnoy-stal-8cr14mov-ruk-nylon-cr7096/"
   },
   {
-    "id": "id000018771",
     "brand": "Ontario",
     "model": "RAT-1",
     "price": "5160",
@@ -66,7 +63,6 @@
     "link": "https://forest-home.ru/product/nozh-ontario-rat-1-on8846-aus-8a-chernyj-rukojat-termopl/"
   },
   {
-    "id": "id000018285",
     "brand": "Kershaw",
     "model": "Volt SS",
     "price": "4850",
@@ -88,7 +84,6 @@
     "link": "https://forest-home.ru/product/nozh-kershaw-volt-ss-skladnoj-stal-8cr13mov-k3655/"
   },
   {
-    "id": "id000019053",
     "brand": "Cold Steel",
     "model": "Ti-lite 4",
     "price": "6690",
@@ -110,7 +105,6 @@
     "link": "https://forest-home.ru/product/nozh-cold-steel-26sp-ti-lite-4-zy-ex-handle-/"
   },
   {
-    "id": "id000031782",
     "brand": "Benchmade",
     "model": "Griptilian 551",
     "price": "18540",
@@ -132,7 +126,6 @@
     "link": "https://forest-home.ru/product/nozh-skladnoy-benchmade-griptilian-551-black-stal-s30v-ruk-olive-drab-nylon-bm551bkod-s30v/"
   },
   {
-    "id": "id000023107",
     "brand": "Spyderco",
     "model": "Police",
     "price": "24150",
@@ -154,7 +147,6 @@
     "link": "https://forest-home.ru/product/nozh-skladnoj-spyderco-police-s07s-stal-vg-10-rukojat-410ss/"
   },
   {
-    "id": "id000029447",
     "brand": "Cold Steel",
     "model": "Luzon Large",
     "price": "5490",
@@ -176,7 +168,6 @@
     "link": "https://forest-home.ru/product/nozh-cold-steel-20nqx-luzon-large-stal-8cr13mov-rukoyat-g10/"
   },
   {
-    "id": "id000032910",
     "brand": "Kizlyar Supreme",
     "model": "Biker-X",
     "price": "6060",
@@ -198,7 +189,6 @@
     "link": "https://forest-home.ru/product/nozh-kizlyar-supreme-biker-x-stal-d2-stonewash-rukoyat-gray-g10/"
   },
   {
-    "id": "id000018257",
     "brand": "BUCK",
     "model": "Folding Hunter 110",
     "price": "7530",
@@ -220,7 +210,6 @@
     "link": "https://forest-home.ru/product/nozh-buck-folding-hunter-skladnoj-420hc-b0110brs/"
   },
   {
-    "id": "id000032544",
     "brand": "Cold Steel",
     "model": "Spartan Serrated",
     "price": "10330",
@@ -242,7 +231,6 @@
     "link": "https://forest-home.ru/product/nozh-cold-steel-spartan-serrated-stal-aus-10a-rukoyat-grivory-21ss/"
   },
   {
-    "id": "id000028270",
     "brand": "Benchmade",
     "model": "Grizzly Ridge",
     "price": "21280",
@@ -264,7 +252,6 @@
     "link": "https://forest-home.ru/product/nozh-skladnoy-benchmade-grizzly-ridge-bm15061-stal-s30v-rukoyat-versafleks/"
   },
   {
-    "id": "id000023341",
     "brand": "Kershaw",
     "model": "Blur",
     "price": "11040",
@@ -286,7 +273,6 @@
     "link": "https://forest-home.ru/product/nozh-kershaw-blur-skladnoj-stal-14c28-stonewash-k1670nbsw-/"
   },
   {
-    "id": "id000019023",
     "brand": "Spyderco",
     "model": "Military Camo",
     "price": "34650",
@@ -308,7 +294,6 @@
     "link": "https://forest-home.ru/product/nozh-skladnoj-spyderco-military-camo-c36gpcmobk-s30v-rukojat-g-10/"
   },
   {
-    "id": "id000024383",
     "brand": "Kizlyar Supreme",
     "model": "Whisper",
     "price": "5340",
@@ -330,7 +315,6 @@
     "link": "https://forest-home.ru/product/nozh-skladnoj-kizlyar-supreme-whisper-d2-stonewash-ruk-g10-kizljar/"
   },
   {
-    "id": "id000027521",
     "brand": "Kershaw",
     "model": "Deadline",
     "price": "4930",
@@ -352,7 +336,6 @@
     "link": "https://forest-home.ru/product/nozh-kershaw-deadline-skladnoy-stal-8cr13mov-k1087/"
   },
   {
-    "id": "id000030844",
     "brand": "Boker",
     "model": "Magnum Chainsaw Attendant",
     "price": "2220",
@@ -374,7 +357,6 @@
     "link": "https://forest-home.ru/product/nozh-boker-magnum-chainsaw-attendant-satin-stal-440b-rukoyat-plastik-bk01ry294/"
   },
   {
-    "id": "id000025413",
     "brand": "Cold Steel",
     "model": "Oyabun Limited",
     "price": "23540",
@@ -396,7 +378,6 @@
     "link": "https://forest-home.ru/product/nozh-cold-steel-oyabun-limited-stal-s35vn-rukoyat-aluminium-g10-32aa/"
   },
   {
-    "id": "id000021299",
     "brand": "Spyderco",
     "model": "Matriarch 2 Emerson",
     "price": "12950",
@@ -418,7 +399,6 @@
     "link": "https://forest-home.ru/product/nozh-skladnoj-spyderco-matriarch-2-emerson-wave-c12sbk2w-vg-10-rukojat-frn/"
   },
   {
-    "id": "id000020189",
     "brand": "Kershaw",
     "model": "Starter",
     "price": "3110",
@@ -440,7 +420,6 @@
     "link": "https://forest-home.ru/product/nozh-kershaw-starter-skladnoj-ctal-3cr13-k1301bw-/"
   },
   {
-    "id": "id000033023",
     "brand": "Boker",
     "model": "Leopard Damast III",
     "price": "71860",
@@ -462,7 +441,6 @@
     "link": "https://forest-home.ru/product/nozh-boker-leopard-damast-iii-collection-ruk-alyuminiydamask-110237dam/"
   },
   {
-    "id": "id000028072",
     "brand": "Reptilian",
     "model": "НКВД-05",
     "price": "12300",
@@ -484,7 +462,6 @@
     "link": "https://forest-home.ru/product/nozh-reptilian-nkvd-05-stal-m390-rukoyat-carbon-red/"
   },
   {
-    "id": "id000020964",
     "brand": "Benchmade",
     "model": "Adamas",
     "price": "20600",
@@ -506,7 +483,6 @@
     "link": "https://forest-home.ru/product/nozh-skladnoj-benchmade-adamas-desert-tan-bm275bksn-stal-d2-rukojat-g10/"
   },
   {
-    "id": "id000027581",
     "brand": "Kizlyar Supreme",
     "model": "Zorg",
     "price": "4360",
@@ -528,7 +504,6 @@
     "link": "https://forest-home.ru/product/nozh-kizlyar-supreme-zorg-stal-d2-gt-rukoyat-g10/"
   },
   {
-    "id": "id000020623",
     "brand": "Spyderco",
     "model": "Delica",
     "price": "9500",
@@ -550,7 +525,6 @@
     "link": "https://forest-home.ru/product/nozh-skladnoj-spyderco-delica-c11fpor-flat-ground-orange-vg-10-rukojat-frn-termoplastik/"
   },
   {
-    "id": "id000012567",
     "brand": "Microtech",
     "model": "Ultratech Hellhound",
     "price": "62180",
@@ -572,7 +546,6 @@
     "link": "https://forest-home.ru/product/nozh-microtech-ultratech-hellhound-stonewash-stal-cts-204p-rukoyat-black-aluminium-119-10s/"
   },
   {
-    "id": "id000033313",
     "brand": "Ontario",
     "model": "Shikra",
     "price": "5040",
@@ -594,7 +567,6 @@
     "link": "https://forest-home.ru/product/nozh-ontario-shikra-on8599-aus-8-blackwash-ruk-natural-canvas-micarta/"
   },
   {
-    "id": "id000022642",
     "brand": "Benchmade",
     "model": "Emissary Aqua",
     "price": "26300",
@@ -616,7 +588,6 @@
     "link": "https://forest-home.ru/product/nozh-skladnoj-benchmade-emissary-aqua-bm477-1-stal-s30v-rukojat-6061-t-6-aluminium/"
   },
   {
-    "id": "id000023264",
     "brand": "Spyderco",
     "model": "Endura",
     "price": "15440",
@@ -638,7 +609,6 @@
     "link": "https://forest-home.ru/product/nozh-spyderco-endura-4-ps-thin-blue-line-stal-vg-10-rukoyat-black-frn-10fpsbkbl/"
   },
   {
-    "id": "id000021309",
     "brand": "Ontario",
     "model": "Utilitac II",
     "price": "4770",
@@ -660,7 +630,6 @@
     "link": "https://forest-home.ru/product/nozh-ontario-joe-pardue-utilitac-ii-tantosatin-stal-aus-8-on8916/"
   },
   {
-    "id": "id000023121",
     "brand": "Microtech",
     "model": "SOCOM Bravo",
     "price": "62500",
@@ -682,7 +651,6 @@
     "link": "https://forest-home.ru/product/nozh-microtech-socom-bravo-s-e-stal-m390-rukoyat-titanium-carbon-fiber-260-7cfti/"
   },
   {
-    "id": "id000003947",
     "brand": "Benchmade",
     "model": "Osborne",
     "price": "50080",
@@ -704,7 +672,6 @@
     "link": "https://forest-home.ru/product/nozh-benchmade-osborne-dlc-stal-s90v-ruk-blackwash-titanium-940bk-2003/"
   },
   {
-    "id": "id000031060",
     "brand": "Reptilian",
     "model": "Цербер",
     "price": "2400",
@@ -726,7 +693,6 @@
     "link": "https://forest-home.ru/product/nozh-reptilian-tserber-stal-d2-ruk-stal/"
   },
   {
-    "id": "id000029816",
     "brand": "Ganzo",
     "model": "Firebird FH11-GB",
     "price": "4590",
@@ -748,7 +714,6 @@
     "link": "https://forest-home.ru/product/nozh-ganzo-firebird-fh11-gb-skladnoy-ctal-d2-ruk-biryuzovyy-g10/"
   },
   {
-    "id": "id000027903",
     "brand": "CRKT",
     "model": "Raikiri",
     "price": "8330",
@@ -770,7 +735,6 @@
     "link": "https://forest-home.ru/product/nozh-crkt-raikiri-skladnoy-stal-14116-ruk-alyuminiy-cr5040/"
   },
   {
-    "id": "id000020428",
     "brand": "BUCK",
     "model": "Vantage Avid",
     "price": "6460",
@@ -792,7 +756,6 @@
     "link": "https://forest-home.ru/product/nozh-buck-vantage-avid-skladnoj-stal-13s26-ruk-krasnoe-derevonejlon-b0346rws/"
   },
   {
-    "id": "id000028936",
     "brand": "Ganzo",
     "model": "Firebird FH921-OR",
     "price": "4840",
@@ -814,7 +777,6 @@
     "link": "https://forest-home.ru/product/nozh-firebird-by-ganzo-fh921-or-ctal-d2-ruk-orange-g10/"
   },
   {
-    "id": "id000013486",
     "brand": "Microtech",
     "model": "UTX-85",
     "price": "38960",
@@ -837,7 +799,6 @@
   },
 
   {
-    "id": "id000033192",
     "brand": "CRKT",
     "model": "Thero",
     "price": "7110",
@@ -859,7 +820,6 @@
     "link": "https://forest-home.ru/product/nozh-crkt-thero-skladnoy-stal-8cr14mov-ruk-frncf-6290/"
   },
   {
-    "id": "id000032757",
     "brand": "Ganzo",
     "model": "Firebird FB727S-CA",
     "price": "2750",
@@ -881,7 +841,6 @@
     "link": "https://forest-home.ru/product/nozh-ganzo-firebird-fb727s-ca-skladnoy-ctal-440c-ruk-g10/"
   },
   {
-    "id": "id000019321",
     "brand": "BUCK",
     "model": "Budgie",
     "price": "10050",
@@ -903,7 +862,6 @@
     "link": "https://forest-home.ru/product/nozh-buck-budgie-stal-s35vn-rukoyat-g10-stal-0417bks/"
   },
   {
-    "id": "id000023445",
     "brand": "Ganzo",
     "model": "D704-BK",
     "price": "4800",
@@ -925,7 +883,6 @@
     "link": "https://forest-home.ru/product/nozh-ganzo-704-ctal-d2-rukoyat-black-g10/"
   },
   {
-    "id": "id554003254",
     "brand": "Reptilian",
     "model": "Молох-02",
     "price": "3300",
@@ -947,7 +904,6 @@
     "link": "https://forest-home.ru/product/nozh-reptilian-moloh-02-stal-9cr18mov-ruk-g10-moloch-02/"
   },
   {
-    "id": "id555413312",
     "brand": "Spyderco",
     "model": "Dragonfly 2",
     "price": "11920",

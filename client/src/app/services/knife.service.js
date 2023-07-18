@@ -8,12 +8,12 @@ const knifeService = {
     return data
   },
   create: async (payload) => {
-    const { data } = await httpService.put(knivesEndpoint + payload.id, payload)
+    const { data } = await httpService.post(knivesEndpoint, payload)
     return data
   },
   update: async (payload) => {
     const { data } = await httpService.patch(
-      knivesEndpoint + payload.id,
+      knivesEndpoint + payload._id,
       payload
     )
     return data

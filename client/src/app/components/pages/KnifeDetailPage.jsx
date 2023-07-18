@@ -6,50 +6,25 @@ import Loader from '../common/Loader'
 import { Navigate, useParams } from 'react-router-dom'
 import AddToCartButton from '../ui/AddToCartButton'
 import { useSelector } from 'react-redux'
-import { getBrandById, getBrandsLoadingStatus } from '../../store/brands'
 import { getColorById, getColorsLoadingStatus } from '../../store/colors'
-import {
-  getCountriesLoadingStatus,
-  getCountryById
-} from '../../store/countries'
-import {
-  getBladeTypeById,
-  getBladeTypesLoadingStatus
-} from '../../store/bladeTypes'
-import {
-  getLockTypeById,
-  getLockTypesLoadingStatus
-} from '../../store/lockTypes'
 import { getKnifeById } from '../../store/knives'
+import AddToFavoritesButton from '../ui/AddToFavoritesButton'
 
 const KnifeDetailPage = () => {
   const params = useParams()
   const { knifeId } = params
-  const brandsLoading = useSelector(getBrandsLoadingStatus())
   const colorsLoading = useSelector(getColorsLoadingStatus())
-  const countriesLoading = useSelector(getCountriesLoadingStatus())
-  const bladeTypesLoading = useSelector(getBladeTypesLoadingStatus())
-  const lockTypesLoading = useSelector(getLockTypesLoadingStatus())
 
   const knife = useSelector(getKnifeById(knifeId))
   if (!knife) return <Navigate to='/page-not-found' />
-  const brand = useSelector(getBrandById(knife.brand))
+
   const color = useSelector(getColorById(knife.color))
-  const country = useSelector(getCountryById(knife.country))
-  const bladeType = useSelector(getBladeTypeById(knife.bladeType))
-  const lockType = useSelector(getLockTypeById(knife.lockType))
 
   useEffect(() => {
     scroll.scrollToTop({ duration: 0, delay: 0, smooth: 'linear' })
   }, [])
 
-  if (
-    brandsLoading ||
-    countriesLoading ||
-    colorsLoading ||
-    bladeTypesLoading ||
-    lockTypesLoading
-  ) {
+  if (colorsLoading) {
     return <Loader />
   }
 
@@ -58,7 +33,8 @@ const KnifeDetailPage = () => {
       <div className='flex-center-column'>
         <div className='knife-detail-wrapper'>
           <h1 className='knife-detail-title'>
-            Складной нож {brand.name} {knife.model}, сталь {knife.bladeMaterial}
+            Складной нож {knife.brand} {knife.model}, сталь{' '}
+            {knife.bladeMaterial}
           </h1>
 
           <div className='knife-detail-top'>
@@ -78,8 +54,8 @@ const KnifeDetailPage = () => {
                 <li>Длина ножа: {knife.overallLength} мм</li>
                 <li>Длина клинка: {knife.bladeLength} мм</li>
                 <li>Толщина клинка: {knife.bladeThickness} мм</li>
-                <li>Тип клинка: {bladeType.name}</li>
-                <li>Тип замка: {lockType.name}</li>
+                <li>Тип клинка: {knife.bladeType}</li>
+                <li>Тип замка: {knife.lockType}</li>
                 <li>Материал клинка: {knife.bladeMaterial}</li>
                 <li>Твердость стали: {knife.hardness} HRC</li>
                 <li>Материал рукояти: {knife.handleMaterial}</li>
@@ -94,7 +70,7 @@ const KnifeDetailPage = () => {
                     </span>
                   )}
                 </li>
-                <li>Страна: {country.name}</li>
+                <li>Страна: {knife.country}</li>
                 <li>Вес: {knife.weight} гр</li>
               </ul>
 
@@ -102,7 +78,10 @@ const KnifeDetailPage = () => {
                 <Price price={knife.price} />
               </div>
 
-              <AddToCartButton knife={knife} label='Добавить в корзину' />
+              <div className='d-flex justify-content-between'>
+                <AddToCartButton knife={knife} label='Добавить в корзину' />
+                <AddToFavoritesButton knife={knife} />
+              </div>
             </div>
           </div>
 

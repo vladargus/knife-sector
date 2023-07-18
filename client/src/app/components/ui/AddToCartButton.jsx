@@ -21,7 +21,7 @@ const AddToCartButton = ({ knife, label }) => {
     if (!userCart) {
       dispatch(
         createUserCart(currentUserId, {
-          [knife.id]: { id: knife.id, quantity: 1 }
+          [knife._id]: { id: knife._id, quantity: 1 }
         })
       )
     } else {
@@ -31,14 +31,14 @@ const AddToCartButton = ({ knife, label }) => {
           items: userCart.items
             ? {
                 ...userCart.items,
-                [knife.id]: userCart.items[knife.id]
+                [knife._id]: userCart.items[knife._id]
                   ? {
-                      id: knife.id,
-                      quantity: userCart.items[knife.id].quantity + 1
+                      id: knife._id,
+                      quantity: userCart.items[knife._id].quantity + 1
                     }
-                  : { id: knife.id, quantity: 1 }
+                  : { id: knife._id, quantity: 1 }
               }
-            : { [knife.id]: { id: knife.id, quantity: 1 } }
+            : { [knife._id]: { id: knife._id, quantity: 1 } }
         })
       )
     }
@@ -47,7 +47,7 @@ const AddToCartButton = ({ knife, label }) => {
   return (
     <button className='knife-button' onClick={handleCartClick}>
       {label}
-      {userCart && userCart.items && userCart.items[knife.id] ? (
+      {userCart && userCart.items && userCart.items[knife._id] ? (
         <i className='bi bi-cart-check-fill ms-2'></i>
       ) : (
         <i className='bi bi-cart ms-2'></i>

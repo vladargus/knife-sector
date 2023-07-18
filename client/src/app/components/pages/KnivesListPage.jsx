@@ -92,33 +92,17 @@ const KnivesListPage = () => {
 
   const filteredKnives = searchData
     ? knives.filter((knife) => {
-        const brand = brands.find((b) => b.id === knife.brand)
-        const fullname = `${brand.name} ${knife.model}`
+        const fullname = `${knife.brand} ${knife.model}`
         return fullname.toLowerCase().includes(searchData.toLowerCase())
       })
     : Object.values(selectedFilters).some((arr) => arr.length > 0)
     ? knives.filter(
         (knife) =>
-          filtrate(
-            selectedFilters.brandsFilter,
-            brands.find((b) => b.id === knife.brand).name
-          ) &&
-          filtrate(
-            selectedFilters.countriesFilter,
-            countries.find((c) => c.id === knife.country).name
-          ) &&
-          filtrate(
-            selectedFilters.colorsFilter,
-            colors.find((c) => c.id === knife.color).name
-          ) &&
-          filtrate(
-            selectedFilters.bladeTypesFilter,
-            bladeTypes.find((b) => b.id === knife.bladeType).name
-          ) &&
-          filtrate(
-            selectedFilters.lockTypesFilter,
-            lockTypes.find((l) => l.id === knife.lockType).name
-          )
+          filtrate(selectedFilters.brandsFilter, knife.brand) &&
+          filtrate(selectedFilters.countriesFilter, knife.country) &&
+          filtrate(selectedFilters.colorsFilter, knife.color) &&
+          filtrate(selectedFilters.bladeTypesFilter, knife.bladeType) &&
+          filtrate(selectedFilters.lockTypesFilter, knife.lockType)
       )
     : knives
 
@@ -209,7 +193,7 @@ const KnivesListPage = () => {
         <div className='items-wrapper w-100'>
           {count ? (
             knivesCrop.map((knife) => (
-              <KnifeItem key={knife.id} knife={knife} />
+              <KnifeItem key={knife._id} knife={knife} />
             ))
           ) : selectedFilters !== initialFilters || searchData !== '' ? (
             <p className='notification notification-text'>

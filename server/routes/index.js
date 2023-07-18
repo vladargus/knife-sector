@@ -10,6 +10,6 @@ router.use('/color', require('./color.routes'))
 router.use('/bladeType', require('./bladeType.routes'))
 router.use('/lockType', require('./lockType.routes'))
 router.use('/cart', require('./cart.routes'))
-router.use('/order', require('./cart.routes'))
+router.use('/order', require('./order.routes'))
 
 module.exports = router

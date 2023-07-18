@@ -8,16 +8,13 @@ const cartService = {
     return data
   },
   create: async (payload) => {
-    const { data } = await httpService.put(cartEndpoint + payload.id, payload)
+    const { data } = await httpService.post(cartEndpoint, payload)
     return data
   },
   update: async (payload) => {
-    const { data } = await httpService.patch(cartEndpoint + payload.id, payload)
-    return data
-  },
-  remove: async (cartId, itemId) => {
-    const { data } = await httpService.delete(
-      cartEndpoint + `${cartId}/` + 'items/' + itemId
+    const { data } = await httpService.patch(
+      cartEndpoint + payload._id,
+      payload
     )
     return data
   }

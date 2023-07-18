@@ -7,11 +7,9 @@ import Loader from '../../common/Loader'
 import Pagination from '../../common/Pagination'
 import { useSelector } from 'react-redux'
 import { getKnives } from '../../../store/knives'
-import { getBrands } from '../../../store/brands'
 
 const AdminPage = () => {
   const knives = useSelector(getKnives())
-  const brands = useSelector(getBrands())
   const [currentPage, setCurrentPage] = useState(1)
   const [searchData, setSearchData] = useState('')
 
@@ -30,8 +28,7 @@ const AdminPage = () => {
 
   const filteredKnives = searchData
     ? knives.filter((knife) => {
-        const brand = brands.find((b) => b.id === knife.brand)
-        const fullname = `${brand.name} ${knife.model}`
+        const fullname = `${knife.brand} ${knife.model}`
         return fullname.toLowerCase().includes(searchData.toLowerCase())
       })
     : knives
@@ -66,7 +63,7 @@ const AdminPage = () => {
       <div className='items-wrapper w-100'>
         {count ? (
           knivesCrop.map((knife) => (
-            <AdminKnifeItem key={knife.id} knife={knife} />
+            <AdminKnifeItem key={knife._id} knife={knife} />
           ))
         ) : searchData !== '' ? (
           <p className='notification notification-text'>

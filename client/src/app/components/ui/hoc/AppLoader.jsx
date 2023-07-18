@@ -31,10 +31,10 @@ const AppLoader = ({ children }) => {
     dispatch(loadCountriesList())
     dispatch(loadBladeTypesList())
     dispatch(loadLockTypesList())
-    dispatch(loadCartList())
-    dispatch(loadOrderList())
     if (isLoggedIn) {
       dispatch(loadUsersList())
+      dispatch(loadCartList())
+      dispatch(loadOrderList())
     }
   }, [isLoggedIn])
 

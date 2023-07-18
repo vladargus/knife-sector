@@ -8,12 +8,12 @@ const orderService = {
     return data
   },
   create: async (payload) => {
-    const { data } = await httpService.put(orderEndpoint + payload.id, payload)
+    const { data } = await httpService.post(orderEndpoint, payload)
     return data
   },
   update: async (payload) => {
     const { data } = await httpService.patch(
-      orderEndpoint + payload.id,
+      orderEndpoint + payload._id,
       payload
     )
     return data

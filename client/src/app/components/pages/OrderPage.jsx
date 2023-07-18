@@ -8,12 +8,10 @@ import {
 import {
   getUserCart,
   getUserCartLoadingStatus,
-  loadCartList,
   updateUserCart
 } from '../../store/cart'
 import { getKnives } from '../../store/knives'
 import { Link, useNavigate } from 'react-router-dom'
-import { getBrands, getBrandsLoadingStatus } from '../../store/brands'
 import Price from '../common/Price'
 import {
   createUserOrder,
@@ -39,8 +37,6 @@ const OrderPage = () => {
   const userCartLoadingStatus = useSelector(getUserCartLoadingStatus())
   const userOrders = useSelector(getUserOrders(currentUserId))
   const knives = useSelector(getKnives())
-  const brands = useSelector(getBrands())
-  const brandsLoading = useSelector(getBrandsLoadingStatus())
 
   const [values, setValues] = useState({
     fullname: currentUser.name + ' ' + currentUser.surname,
@@ -52,10 +48,6 @@ const OrderPage = () => {
     agreement: true
   })
   const [errors, setErrors] = useState({})
-
-  useEffect(() => {
-    dispatch(loadCartList())
-  }, [userCart])
 
   const validatorConfig = {
     fullname: {
@@ -103,12 +95,16 @@ const OrderPage = () => {
   }, [values])
 
   const deliveryTypes = [
-    { name: 'Самовывоз из магазина (бесплатно)', id: 0 },
-    { name: 'Почта России (400 руб.)', id: 400 },
-    { name: 'Курьерская служба СДЭК (800 руб.)', id: 800 }
+    { name: 'Самовывоз из магазина (бесплатно)', _id: 1, cost: 0 },
+    { name: 'Почта России (400 руб.)', _id: 2, cost: 400 },
+    { name: 'Курьерская служба СДЭК (800 руб.)', _id: 3, cost: 800 }
   ]
 
-  if (brandsLoading) return 'Loading...'
+  const getDeliveryTypeCost = (name) => {
+    const deliveryType = deliveryTypes.find((dt) => dt.name === name)
+
+    if (deliveryType) return deliveryType.cost
+  }
 
   const handleChange = (target) => {
     setValues((prevState) => ({ ...prevState, [target.name]: target.value }))
@@ -131,7 +127,6 @@ const OrderPage = () => {
     const isValid = validate()
     if (!isValid) return
 
-    const userOrdersId = getNewId('userOrders')
     const orderId = getNewId('order')
 
     const newOrder = {
@@ -149,7 +144,6 @@ const OrderPage = () => {
     if (!userOrders) {
       dispatch(
         createUserOrder({
-          id: userOrdersId,
           userId: currentUserId,
           orders: { [orderId]: newOrder }
         })
@@ -193,13 +187,13 @@ const OrderPage = () => {
   if (!userCart || !userCart.items) return <EmptyCart />
 
   const filteredKnives = knives.filter((knife) =>
-    Object.keys(userCart.items).includes(knife.id)
+    Object.keys(userCart.items).includes(knife._id)
   )
 
   const total =
     filteredKnives.reduce((acc, knife) => {
-      return acc + knife.price * userCart.items[knife.id].quantity
-    }, 0) + Number(values.deliveryType)
+      return acc + knife.price * userCart.items[knife._id].quantity
+    }, 0) + (values.deliveryType ? getDeliveryTypeCost(values.deliveryType) : 0)
 
   if (userLoadingStatus) return <Loader />
 
@@ -212,17 +206,12 @@ const OrderPage = () => {
           <ul className='order-list'>
             {filteredKnives.length
               ? filteredKnives.map((knife) => (
-                  <li key={knife.id}>
+                  <li key={knife._id}>
                     <div className='d-flex w-100 justify-content-between'>
-                      <span>
-                        Нож{' '}
-                        {brands.find((b) => b.id === knife.brand).name +
-                          ' ' +
-                          knife.model}
-                      </span>
+                      <span>Нож {knife.brand + ' ' + knife.model}</span>
                       <span>
                         <Price price={knife.price} />
-                        {' x ' + userCart.items[knife.id].quantity}
+                        {' x ' + userCart.items[knife._id].quantity}
                       </span>
                     </div>
                     <hr />
@@ -233,7 +222,13 @@ const OrderPage = () => {
               <div className='d-flex w-100 justify-content-between'>
                 <span>Доставка</span>
                 <span>
-                  <Price price={values.deliveryType} />
+                  <Price
+                    price={
+                      values.deliveryType
+                        ? getDeliveryTypeCost(values.deliveryType)
+                        : 0
+                    }
+                  />
                 </span>
               </div>
               <hr />

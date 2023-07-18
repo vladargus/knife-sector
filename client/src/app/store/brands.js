@@ -38,10 +38,5 @@ export const loadBrandsList = () => async (dispatch) => {
 
 export const getBrands = () => (state) => state.brands.entities
 export const getBrandsLoadingStatus = () => (state) => state.brands.isLoading
-export const getBrandById = (id) => (state) => {
-  if (state.brands.entities) {
-    return state.brands.entities.find((b) => b.id === id)
-  }
-}
 
 export default brandsReducer

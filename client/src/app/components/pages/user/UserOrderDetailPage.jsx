@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux'
 import { Link, useParams } from 'react-router-dom'
 import Price from '../../common/Price'
 import { getKnives } from '../../../store/knives'
-import { getBrands } from '../../../store/brands'
 import {
   getUserOrderById,
   getUserOrdersLoadingStatus
@@ -19,36 +18,44 @@ const UserOrderDetailPage = () => {
   const userOrdersLoadingStatus = useSelector(getUserOrdersLoadingStatus())
   const order = useSelector(getUserOrderById(currentUserId, orderId))
   const knives = useSelector(getKnives())
-  const brands = useSelector(getBrands())
 
   if (userOrdersLoadingStatus) return <Loader />
 
+  const deliveryTypes = [
+    { name: 'Самовывоз из магазина (бесплатно)', _id: 1, cost: 0 },
+    { name: 'Почта России (400 руб.)', _id: 2, cost: 400 },
+    { name: 'Курьерская служба СДЭК (800 руб.)', _id: 3, cost: 800 }
+  ]
+
+  const getDeliveryTypeCost = (name) => {
+    const deliveryType = deliveryTypes.find((dt) => dt.name === name)
+
+    if (deliveryType) return deliveryType.cost
+  }
+
   const filteredKnives = knives.filter((knife) =>
-    Object.keys(order.items).includes(knife.id)
+    Object.keys(order.items).includes(knife._id)
   )
 
   const total =
     filteredKnives.reduce((acc, knife) => {
-      return acc + knife.price * order.items[knife.id].quantity
-    }, 0) + Number(order.deliveryType)
+      return acc + knife.price * order.items[knife._id].quantity
+    }, 0) + (order.deliveryType ? getDeliveryTypeCost(order.deliveryType) : 0)
 
   return (
     <div className='flex-center-column profile-container'>
-      <p className='fw-semibold'>Ваш заказ №{order.orderId}:</p>
+      <p className='fw-semibold'>
+        Ваш заказ №{order.orderId.replace('order', '')}:
+      </p>
       <ul className='order-list w-50'>
         {filteredKnives.length
           ? filteredKnives.map((knife) => (
-              <li key={knife.id}>
+              <li key={knife._id}>
                 <div className='d-flex w-100 justify-content-between'>
-                  <span>
-                    Нож{' '}
-                    {brands.find((b) => b.id === knife.brand).name +
-                      ' ' +
-                      knife.model}
-                  </span>
+                  <span>Нож {knife.brand + ' ' + knife.model}</span>
                   <span>
                     <Price price={knife.price} />
-                    {' x ' + order.items[knife.id].quantity}
+                    {' x ' + order.items[knife._id].quantity}
                   </span>
                 </div>
                 <hr />
@@ -60,7 +67,13 @@ const UserOrderDetailPage = () => {
             <div className='d-flex w-100 justify-content-between'>
               <span>Доставка</span>
               <span>
-                <Price price={order.deliveryType} />
+                <Price
+                  price={
+                    order.deliveryType
+                      ? getDeliveryTypeCost(order.deliveryType)
+                      : 0
+                  }
+                />
               </span>
             </div>
             <hr />
@@ -81,6 +94,7 @@ const UserOrderDetailPage = () => {
         <p>E-mail: {order.email}</p>
         <p>Телефон: {order.phone}</p>
         {order.address && <p>Адрес доставки: {order.address}</p>}
+        <p>Способ доставки: {order.deliveryType}</p>
         {order.comment && <p>Примечание: {order.comment}</p>}
       </div>
 

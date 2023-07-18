@@ -58,7 +58,7 @@ const usersSlice = createSlice({
     },
     userUpdateSuccessed: (state, action) => {
       state.entities[
-        state.entities.findIndex((user) => user.id === action.payload.id)
+        state.entities.findIndex((user) => user._id === action.payload._id)
       ] = action.payload
     },
     authRequested: (state) => {
@@ -78,15 +78,12 @@ export const {
   authRequestSuccessed,
   authRequestFailed,
   signUpRequestFailed,
-  userCreated,
   userLoggedOut,
   userUpdateSuccessed,
   clearError
 } = actions
 
 const authRequested = createAction('users/authRequested')
-const userCreateRequested = createAction('users/userCreateRequested')
-const createUserFailed = createAction('users/createUserFailed')
 const userUpdateRequested = createAction('users/userUpdateRequested')
 const userUpdateFailed = createAction('users/userUpdateFailed')
 
@@ -97,8 +94,8 @@ export const logIn =
     dispatch(authRequested())
     try {
       const data = await authService.login({ email, password })
-      dispatch(authRequestSuccessed({ userId: data.localId }))
       localStorageService.setTokens(data)
+      dispatch(authRequestSuccessed({ userId: data.userId }))
       history.navigate(redirect)
     } catch (error) {
       const { code, message } = error.response.data.error
@@ -111,49 +108,27 @@ export const logIn =
     }
   }
 
-export const signUp =
-  ({ email, password, ...rest }) =>
-  async (dispatch) => {
-    dispatch(authRequested())
-    try {
-      const data = await authService.register({ email, password })
-      localStorageService.setTokens(data)
-      history.navigate('/')
-      dispatch(authRequestSuccessed({ userId: data.localId }))
-      dispatch(
-        createUser({
-          id: data.localId,
-          email,
-          isAdmin: false,
-          ...rest
-        })
-      )
-    } catch (error) {
-      const { code, message } = error.response.data.error
-      if (code === 400) {
-        const errorMessage = generateAuthError(message)
-        dispatch(signUpRequestFailed(errorMessage))
-      } else {
-        dispatch(signUpRequestFailed(error.message))
-      }
+export const signUp = (payload) => async (dispatch) => {
+  dispatch(authRequested())
+  try {
+    const data = await authService.register(payload)
+    localStorageService.setTokens(data)
+    history.navigate('/')
+    dispatch(authRequestSuccessed({ userId: data.userId }))
+  } catch (error) {
+    const { code, message } = error.response.data.error
+    if (code === 400) {
+      const errorMessage = generateAuthError(message)
+      dispatch(signUpRequestFailed(errorMessage))
+    } else {
+      dispatch(signUpRequestFailed(error.message))
     }
   }
+}
 
 export const logOut = () => (dispatch) => {
   localStorageService.removeAuthData()
   dispatch(userLoggedOut())
-}
-
-function createUser(payload) {
-  return async function (dispatch) {
-    dispatch(userCreateRequested())
-    try {
-      const { content } = await userService.create(payload)
-      dispatch(userCreated(content))
-    } catch (error) {
-      dispatch(createUserFailed(error.message))
-    }
-  }
 }
 
 export const updateUser = (payload) => async (dispatch) => {
@@ -161,17 +136,6 @@ export const updateUser = (payload) => async (dispatch) => {
   try {
     const { content } = await userService.update(payload)
     dispatch(userUpdateSuccessed(content))
-  } catch (error) {
-    dispatch(userUpdateFailed(error.message))
-  }
-}
-
-export const updateEmail = (email) => async (dispatch) => {
-  dispatch(userUpdateRequested())
-  try {
-    const data = await authService.updateEmail({ email })
-    localStorageService.setTokens(data)
-    dispatch(userUpdateSuccessed(data))
   } catch (error) {
     dispatch(userUpdateFailed(error.message))
   }
@@ -189,7 +153,7 @@ export const loadUsersList = () => async (dispatch) => {
 
 export const getCurrentUserData = () => (state) => {
   return state.users.entities
-    ? state.users.entities.find((u) => u.id === state.users.auth.userId)
+    ? state.users.entities.find((u) => u._id === state.users.auth.userId)
     : null
 }
 

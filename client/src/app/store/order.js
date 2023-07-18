@@ -6,8 +6,7 @@ const orderSlice = createSlice({
   initialState: {
     entities: null,
     isLoading: true,
-    error: null,
-    dataLoaded: false
+    error: null
   },
   reducers: {
     orderRequested: (state) => {
@@ -15,7 +14,6 @@ const orderSlice = createSlice({
     },
     orderReceived: (state, action) => {
       state.entities = action.payload
-      state.dataLoaded = true
       state.isLoading = false
     },
     orderRequestFailed: (state, action) => {
@@ -27,7 +25,7 @@ const orderSlice = createSlice({
     },
     userOrdersUpdated: (state, action) => {
       state.entities[
-        state.entities.findIndex((user) => user.id === action.payload.id)
+        state.entities.findIndex((user) => user._id === action.payload._id)
       ] = action.payload
     }
   }

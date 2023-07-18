@@ -35,7 +35,7 @@ const UserPage = () => {
         </div>
         <Link
           className='knife-button link-button'
-          to={`/user/${currentUser.id}/edit`}
+          to={`/user/${currentUser._id}/edit`}
         >
           Редактировать профиль
         </Link>

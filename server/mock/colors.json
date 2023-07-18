@@ -1,12 +1,12 @@
 [
-  { "name": "Black", "hex": "000000", "id": "color_1" },
-  { "name": "Blue", "hex": "0D4CFF", "id": "color_2" },
-  { "name": "Camo", "hex": "497249", "id": "color_3" },
-  { "name": "Green Grey", "hex": "347889", "id": "color_4" },
-  { "name": "Olive Drab", "hex": "4F6B3D", "id": "color_5" },
-  { "name": "Orange", "hex": "FF540E", "id": "color_6" },
-  { "name": "Steel", "hex": "ADADAD", "id": "color_7" },
-  { "name": "Tan", "hex": "A68760", "id": "color_8" },
-  { "name": "Wood", "hex": "3A2C1C", "id": "color_9" },
-  { "name": "Yellow", "hex": "FFF200", "id": "color_10" }
+  { "name": "Black", "hex": "000000" },
+  { "name": "Blue", "hex": "0D4CFF" },
+  { "name": "Camo", "hex": "497249" },
+  { "name": "Green Grey", "hex": "347889" },
+  { "name": "Olive Drab", "hex": "4F6B3D" },
+  { "name": "Orange", "hex": "FF540E" },
+  { "name": "Steel", "hex": "ADADAD" },
+  { "name": "Tan", "hex": "A68760" },
+  { "name": "Wood", "hex": "3A2C1C" },
+  { "name": "Yellow", "hex": "FFF200" }
 ]

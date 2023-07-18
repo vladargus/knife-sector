@@ -42,7 +42,7 @@ const Filter = ({
 }
 
 Filter.defaultProps = {
-  valueProperty: 'id',
+  valueProperty: '_id',
   contentProperty: 'name'
 }
 

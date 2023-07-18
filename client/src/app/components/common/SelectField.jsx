@@ -25,9 +25,9 @@ const SelectField = ({
     !Array.isArray(options) && typeof options === 'object'
       ? Object.values(options).map((opt) => ({
           name: options[opt].name,
-          value: options[opt].id
+          value: options[opt]._id
         }))
-      : options.map((opt) => ({ name: opt.name, value: opt.id }))
+      : options.map((opt) => ({ name: opt.name, value: opt._id }))
 
   return (
     <div className='input-wrapper'>
@@ -48,7 +48,7 @@ const SelectField = ({
           </option>
           {optionsArray.length > 0 &&
             optionsArray.map((option) => (
-              <option value={option.value} key={option.value}>
+              <option value={option.name} key={option.value}>
                 {option.name}
               </option>
             ))}

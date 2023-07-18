@@ -22,12 +22,14 @@ const FavoritesListPage = () => {
     setCurrentPage(pageIndex)
   }
 
-  if (!currentUser.liked) {
+  if (!currentUser.favorites) {
     return <EmptyFavorites />
   }
 
-  const filteredKnives = knives.filter((knife) =>
-    Object.keys(currentUser.liked).includes(knife.id)
+  const filteredKnives = knives.filter(
+    (knife) =>
+      Object.keys(currentUser.favorites).includes(knife._id) &&
+      currentUser.favorites[knife._id]
   )
 
   const count = filteredKnives.length
@@ -44,7 +46,7 @@ const FavoritesListPage = () => {
         <div className='items-wrapper w-100'>
           {count ? (
             knivesCrop.map((knife) => (
-              <KnifeItem key={knife.id} knife={knife} />
+              <KnifeItem key={knife._id} knife={knife} />
             ))
           ) : (
             <Loader />

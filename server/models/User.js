@@ -8,6 +8,7 @@ const schema = new Schema(
     email: { type: String, required: true, unique: trusted },
     password: String,
     isAdmin: Boolean,
+    favorites: Schema.Types.Mixed,
   },
   {
     timestamps: true,

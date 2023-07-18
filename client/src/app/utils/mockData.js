@@ -52,31 +52,31 @@ const useMockData = () => {
   async function initialize() {
     try {
       for (const brand of brands) {
-        await httpService.put('brand/' + brand.id, brand)
+        await httpService.put('brand/' + brand._id, brand)
         incrementCount()
       }
       for (const knife of knives) {
-        await httpService.put('knife/' + knife.id, knife)
+        await httpService.put('knife/' + knife._id, knife)
         incrementCount()
       }
       for (const country of countries) {
-        await httpService.put('country/' + country.id, country)
+        await httpService.put('country/' + country._id, country)
         incrementCount()
       }
       for (const color of colors) {
-        await httpService.put('color/' + color.id, color)
+        await httpService.put('color/' + color._id, color)
         incrementCount()
       }
       for (const bladeType of bladeTypes) {
-        await httpService.put('bladeType/' + bladeType.id, bladeType)
+        await httpService.put('bladeType/' + bladeType._id, bladeType)
         incrementCount()
       }
       for (const lockType of lockTypes) {
-        await httpService.put('lockType/' + lockType.id, lockType)
+        await httpService.put('lockType/' + lockType._id, lockType)
         incrementCount()
       }
       for (const user of users) {
-        await httpService.put('user/' + user.id, user)
+        await httpService.put('user/' + user._id, user)
         incrementCount()
       }
     } catch (error) {

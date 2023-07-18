@@ -5,14 +5,14 @@ const EXPIRES_KEY = 'jwt-expires'
 const KNIVES_KEY = 'knives'
 
 export function setTokens({
-  localId,
+  userId,
   refreshToken,
-  idToken,
+  accessToken,
   expiresIn = 3600
 }) {
   const expiresDate = new Date().getTime() + expiresIn * 1000
-  localStorage.setItem(USERID_KEY, localId)
-  localStorage.setItem(TOKEN_KEY, idToken)
+  localStorage.setItem(USERID_KEY, userId)
+  localStorage.setItem(TOKEN_KEY, accessToken)
   localStorage.setItem(REFRESH_KEY, refreshToken)
   localStorage.setItem(EXPIRES_KEY, expiresDate)
 }

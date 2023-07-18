@@ -47,15 +47,15 @@ const NavProfile = () => {
           'dropdown-menu dropdown-menu-end p-0' + (isOpen ? ' show' : '')
         }
       >
-        <Link className='dropdown-item' to={`/user/${currentUser.id}/profile`}>
+        <Link className='dropdown-item' to={`/user/${currentUser._id}/profile`}>
           <i className='bi bi-person-gear me-3'></i>Мой профиль
         </Link>
-        <Link className='dropdown-item' to={`/user/${currentUser.id}/orders`}>
+        <Link className='dropdown-item' to={`/user/${currentUser._id}/orders`}>
           <i className='bi bi-list-ul me-3'></i>Мои заказы
         </Link>
         <Link
           className='dropdown-item'
-          to={`/user/${currentUser.id}/favorites`}
+          to={`/user/${currentUser._id}/favorites`}
         >
           <i className='bi bi-heart me-3'></i>Избранное
         </Link>

@@ -40,10 +40,5 @@ export const loadCountriesList = () => async (dispatch) => {
 export const getCountries = () => (state) => state.countries.entities
 export const getCountriesLoadingStatus = () => (state) =>
   state.countries.isLoading
-export const getCountryById = (id) => (state) => {
-  if (state.countries.entities) {
-    return state.countries.entities.find((c) => c.id === id)
-  }
-}
 
 export default countriesReducer

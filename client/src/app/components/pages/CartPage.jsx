@@ -1,11 +1,10 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Loader from '../common/Loader'
 import { useDispatch, useSelector } from 'react-redux'
 import { getKnives } from '../../store/knives'
 import {
   getUserCart,
   getUserCartLoadingStatus,
-  loadCartList,
   updateUserCart
 } from '../../store/cart'
 import { getCurrentUserId } from '../../store/users'
@@ -21,19 +20,15 @@ const CartPage = () => {
   const knives = useSelector(getKnives())
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(loadCartList())
-  }, [userCart])
-
   if (userCartLoadingStatus && !userCart) return <Loader />
   if (!userCart || !userCart.items) return <EmptyCart />
 
   const filteredKnives = knives.filter((knife) =>
-    Object.keys(userCart.items).includes(knife.id)
+    Object.keys(userCart.items).includes(knife._id)
   )
 
   const total = filteredKnives.reduce((acc, knife) => {
-    return acc + knife.price * userCart.items[knife.id].quantity
+    return acc + knife.price * userCart.items[knife._id].quantity
   }, 0)
 
   const handleClearCart = () => {
@@ -51,7 +46,7 @@ const CartPage = () => {
       <div className='items-wrapper w-100'>
         {filteredKnives.length ? (
           filteredKnives.map((knife) => (
-            <CartKnifeItem key={knife.id} knife={knife} />
+            <CartKnifeItem key={knife._id} knife={knife} />
           ))
         ) : (
           <Loader />

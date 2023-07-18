@@ -462,7 +462,7 @@ body {
 }
 @media (min-width: 1024px) {
   .knife-detail-image-link {
-    width: 33.333333%;
+    width: 50vh;
     height: 100%;
   }
 }
@@ -470,9 +470,11 @@ body {
 .specs-list {
   line-height: 2;
   list-style-type: circle;
+  padding-left: 0;
 }
 
 .specs-list-title {
+  text-align: center;
   margin-bottom: 0.5rem;
   margin-top: 2.5rem;
   font-size: 1.25rem;
@@ -487,7 +489,7 @@ body {
 }
 
 .knife-detail-price {
-  margin-top: 1.25rem;
+  margin-top: 0.5rem;
   font-size: 1.5rem;
   line-height: 2rem;
   font-weight: 600;

@@ -1,10 +1,10 @@
-const Knife = require('../models/Knife')
+// const Knife = require('../models/Knife')
 const Brand = require('../models/Brand')
 const Country = require('../models/Country')
 const Color = require('../models/Color')
 const BladeType = require('../models/BladeType')
 const LockType = require('../models/LockType')
-const knifeMock = require('../mock/knives.json')
+// const knifeMock = require('../mock/knives.json')
 const brandMock = require('../mock/brands.json')
 const countryMock = require('../mock/countries.json')
 const colorMock = require('../mock/colors.json')
@@ -12,10 +12,12 @@ const bladeTypeMock = require('../mock/bladeTypes.json')
 const lockTypeMock = require('../mock/lockTypes.json')
 
 module.exports = async () => {
-  const knives = await Knife.find()
-  if (knives.length !== knifeMock.length) {
-    await createInitialEntity(Knife, knifeMock)
-  }
+  // knives только загружаем только один раз,
+  // т.к. их можно добавлять или удалять
+  // const knives = await Knife.find()
+  // if (knives.length !== knifeMock.length) {
+  //   await createInitialEntity(Knife, knifeMock)
+  // }
 
   const brands = await Brand.find()
   if (brands.length !== brandMock.length) {

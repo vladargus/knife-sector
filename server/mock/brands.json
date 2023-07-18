@@ -1,14 +1,14 @@
 [
-  { "name": "Benchmade", "id": "brand_1" },
-  { "name": "Boker", "id": "brand_2" },
-  { "name": "BUCK", "id": "brand_3" },
-  { "name": "Cold Steel", "id": "brand_4" },
-  { "name": "CRKT", "id": "brand_5" },
-  { "name": "Ganzo", "id": "brand_6" },
-  { "name": "Kershaw", "id": "brand_7" },
-  { "name": "Kizlyar Supreme", "id": "brand_8" },
-  { "name": "Microtech", "id": "brand_9" },
-  { "name": "Ontario", "id": "brand_10" },
-  { "name": "Reptilian", "id": "brand_11" },
-  { "name": "Spyderco", "id": "brand_12" }
+  { "name": "Benchmade" },
+  { "name": "Boker" },
+  { "name": "BUCK" },
+  { "name": "Cold Steel" },
+  { "name": "CRKT" },
+  { "name": "Ganzo" },
+  { "name": "Kershaw" },
+  { "name": "Kizlyar Supreme" },
+  { "name": "Microtech" },
+  { "name": "Ontario" },
+  { "name": "Reptilian" },
+  { "name": "Spyderco" }
 ]

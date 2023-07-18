@@ -1,7 +1,6 @@
 import { createAction, createSlice } from '@reduxjs/toolkit'
 import knifeService from '../services/knife.service'
 import { shuffle } from '../utils/shuffle'
-import { getNewId } from '../utils/getNewId'
 
 const knivesSlice = createSlice({
   name: 'knives',
@@ -27,12 +26,12 @@ const knivesSlice = createSlice({
     },
     knifeUpdated: (state, action) => {
       state.entities[
-        state.entities.findIndex((knife) => knife.id === action.payload.id)
+        state.entities.findIndex((knife) => knife._id === action.payload._id)
       ] = action.payload
     },
     knifeRemoved: (state, action) => {
       state.entities = state.entities.filter(
-        (knife) => knife.id !== action.payload
+        (knife) => knife._id !== action.payload
       )
     }
   }
@@ -63,12 +62,8 @@ export const loadKnivesList = () => async (dispatch) => {
 
 export const createKnife = (payload) => async (dispatch) => {
   dispatch(addKnifeRequested(payload))
-  const knife = {
-    ...payload,
-    id: getNewId('knife')
-  }
   try {
-    const { content } = await knifeService.create(knife)
+    const { content } = await knifeService.create(payload)
     dispatch(knifeCreated(content))
   } catch (error) {
     dispatch(knivesRequestFailed(error.message))
@@ -89,7 +84,7 @@ export const removeKnife = (knifeId) => async (dispatch) => {
   dispatch(removeKnifeRequested())
   try {
     const { content } = await knifeService.remove(knifeId)
-    if (content === null) {
+    if (!content) {
       dispatch(knifeRemoved(knifeId))
     }
   } catch (error) {
@@ -101,7 +96,7 @@ export const getKnives = () => (state) => state.knives.entities
 export const getKnivesLoadingStatus = () => (state) => state.knives.isLoading
 export const getKnifeById = (id) => (state) => {
   if (state.knives.entities) {
-    return state.knives.entities.find((k) => k.id === id)
+    return state.knives.entities.find((k) => k._id === id)
   }
 }
 
