@@ -6,7 +6,7 @@ import Loader from '../common/Loader'
 import { Navigate, useParams } from 'react-router-dom'
 import AddToCartButton from '../ui/AddToCartButton'
 import { useSelector } from 'react-redux'
-import { getColorById, getColorsLoadingStatus } from '../../store/colors'
+import { getColorByName, getColorsLoadingStatus } from '../../store/colors'
 import { getKnifeById } from '../../store/knives'
 import AddToFavoritesButton from '../ui/AddToFavoritesButton'
 
@@ -18,7 +18,7 @@ const KnifeDetailPage = () => {
   const knife = useSelector(getKnifeById(knifeId))
   if (!knife) return <Navigate to='/page-not-found' />
 
-  const color = useSelector(getColorById(knife.color))
+  const color = useSelector(getColorByName(knife.color))
 
   useEffect(() => {
     scroll.scrollToTop({ duration: 0, delay: 0, smooth: 'linear' })

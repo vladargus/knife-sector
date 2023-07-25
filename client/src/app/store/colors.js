@@ -38,9 +38,9 @@ export const loadColorsList = () => async (dispatch) => {
 
 export const getColors = () => (state) => state.colors.entities
 export const getColorsLoadingStatus = () => (state) => state.colors.isLoading
-export const getColorById = (id) => (state) => {
+export const getColorByName = (name) => (state) => {
   if (state.colors.entities) {
-    return state.colors.entities.find((c) => c._id === id)
+    return state.colors.entities.find((c) => c.name === name)
   }
 }
 
